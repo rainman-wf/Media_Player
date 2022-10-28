@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.trackList.adapter = trackListAdapter
 
+        lifecycle.addObserver(viewModel)
+
         viewModel.trackModel.observe(this) { track ->
             binding.player.title.text = track.fileName
             trackListAdapter.setSingleSelection(trackListAdapter.currentList.indexOf(track))
